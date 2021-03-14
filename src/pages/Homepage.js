@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { TodoContext } from "../context/TodoContext";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
+import TaskCard from "../components/TaskCard";
+import { EditTaskContextProvider } from "../context/EditTaskContext";
 export default function HomePage() {
   const {
     arrTask,
@@ -21,23 +23,9 @@ export default function HomePage() {
       <div className="w-full font-sans mt-8 bg-red-100">
         {arrTask &&
           arrTask.map((task) => (
-            <div
-              key={task.id}
-              className={`w-full bg-gray-200 text-red-500 border-black border-solid ${
-                task.done ? " line-through" : ""
-              } `}
-            >
-              id : {task.id} {task.name} {"  "} {task.description}{" "}
-              {dateFormatShort(task.date)}
-              <button
-                className=" text-red-700 bg-gray-300 px-2 py-1 rounded-3xl focus:outline-none"
-                onClick={() => {
-                  setArrTask(arrTask.filter((item) => item.id !== task.id));
-                }}
-              >
-                del
-              </button>
-            </div>
+            <EditTaskContextProvider key={task.id} task={task}>
+              <TaskCard />
+            </EditTaskContextProvider>
           ))}
         <form onSubmit={addTask} className="text-black focus:outline-none ">
           <label>
