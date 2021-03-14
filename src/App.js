@@ -1,15 +1,17 @@
-import "./App.css";
+import React from "react";
+import HomePage from "./pages/Homepage";
+import { Switch, Route } from "react-router-dom";
+import { TodoContextProvider } from "./context/TodoContext";
 
 function App() {
   return (
-    <div className="App ">
-      <header className="App-header">
-        <div className=" w-full h-screen bg-green-300 text-gray-300 text-center ">
-          HELLLO <span>HdsdsE</span>
-        </div>
-      </header>
-    </div>
+    <Switch>
+      <Route path="/">
+        <TodoContextProvider>
+          <HomePage />
+        </TodoContextProvider>
+      </Route>
+    </Switch>
   );
 }
-
 export default App;
