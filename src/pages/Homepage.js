@@ -10,8 +10,9 @@ export default function HomePage() {
     task,
     setTask,
     dateFormatShort,
+    setArrTask,
   } = useContext(TodoContext);
-
+  // const [done, setDone] = useState(false);
   return (
     <div className="w-full h-screen bg-gray-100 text-gray-300 text-center">
       <div className="w-full pt-8 pl-8 text-4xl font-extrabold text-left text-green-400 ">
@@ -22,10 +23,20 @@ export default function HomePage() {
           arrTask.map((task) => (
             <div
               key={task.id}
-              className=" w-full bg-gray-200 text-red-500 border-black border-solid "
+              className={`w-full bg-gray-200 text-red-500 border-black border-solid ${
+                task.done ? " line-through" : ""
+              } `}
             >
               id : {task.id} {task.name} {"  "} {task.description}{" "}
               {dateFormatShort(task.date)}
+              <button
+                className=" text-red-700 bg-gray-300 px-2 py-1 rounded-3xl focus:outline-none"
+                onClick={() => {
+                  setArrTask(arrTask.filter((item) => item.id !== task.id));
+                }}
+              >
+                del
+              </button>
             </div>
           ))}
         <form onSubmit={addTask} className="text-black focus:outline-none ">

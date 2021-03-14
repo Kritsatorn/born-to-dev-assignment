@@ -60,6 +60,7 @@ const TodoContextProvider = (props) => {
         task,
         setTask,
         dateFormatShort,
+        setArrTask,
       }}
     >
       {props.children}
