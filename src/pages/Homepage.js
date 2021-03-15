@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { TodoContext } from "../context/TodoContext";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
@@ -12,7 +12,6 @@ export default function HomePage() {
     task,
     setTask,
     dateFormatShort,
-    setArrTask,
   } = useContext(TodoContext);
   // const [done, setDone] = useState(false);
   return (
