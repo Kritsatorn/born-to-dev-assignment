@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { TodoContext } from "../context/TodoContext";
 import "react-day-picker/lib/style.css";
 import TaskCard from "../components/TaskCard";
 import CreateTask from "../components/CreateTask";
+import { TodoContext } from "../context/TodoContext";
 import { EditTaskContextProvider } from "../context/EditTaskContext";
+
 export default function HomePage() {
   const { arrTask, dateFormatShort } = useContext(TodoContext);
 
@@ -21,7 +22,6 @@ export default function HomePage() {
         <h2 class=" text-left text-5xl font-normal leading-normal pl-8 mt-0 mb-2 text-pink-800">
           Today
         </h2>
-
         {arrTask &&
           arrTask
             .filter(
@@ -38,7 +38,6 @@ export default function HomePage() {
         <h2 class=" text-left text-5xl font-normal leading-normal pl-8 mt-0 mb-2 text-pink-800">
           Others Day
         </h2>
-
         {arrTask &&
           arrTask
             .filter(

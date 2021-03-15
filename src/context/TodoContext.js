@@ -1,8 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 const TodoContext = React.createContext();
+
 const TodoContextProvider = (props) => {
   const [arrTask, setArrTask] = useLocalStorage("arrTask", []);
+  const [task, setTask] = useState({
+    id: 0,
+    name: "",
+    description: "",
+    date: new Date(),
+    done: false,
+  });
   let maxId = 0;
   if (arrTask.lenght > 0) {
     maxId = arrTask.reduce(
@@ -11,24 +19,17 @@ const TodoContextProvider = (props) => {
     );
   }
   const [countTask, setCountTask] = useState(maxId + 1);
-  const [task, setTask] = useState({
-    id: 0,
-    name: "",
-    description: "",
-    date: new Date(),
-    done: false,
-  });
+
   const dateFormatShort = (date) => {
     var t = new Date(date);
     return (
       t.getDate() + " " + monthShortNames[t.getMonth()] + ", " + t.getFullYear()
     );
   };
+
   const addTask = (event) => {
     event.preventDefault();
-
     setArrTask([...arrTask, task]);
-
     setCountTask((prev) => prev + 1);
     setTask({
       id: countTask,
@@ -38,12 +39,14 @@ const TodoContextProvider = (props) => {
       done: false,
     });
   };
+
   const updateField = (event) => {
     setTask({
       ...task,
       [event.target.name]: event.target.value,
     });
   };
+
   var monthShortNames = [
     "Jan",
     "Feb",
@@ -58,19 +61,17 @@ const TodoContextProvider = (props) => {
     "Nov",
     "Dec",
   ];
-  useEffect(() => {
-    console.log("arr ", arrTask);
-  }, [arrTask]);
+
   return (
     <TodoContext.Provider
       value={{
         arrTask,
+        setArrTask,
         addTask,
-        updateField,
         task,
         setTask,
+        updateField,
         dateFormatShort,
-        setArrTask,
       }}
     >
       {props.children}

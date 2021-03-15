@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
-import { EditTaskContext } from "../context/EditTaskContext";
 import { TodoContext } from "../context/TodoContext";
+import { EditTaskContext } from "../context/EditTaskContext";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
+
 export default function DateCanEdit() {
   const { storeEdit, task } = useContext(EditTaskContext);
   const { dateFormatShort } = useContext(TodoContext);
@@ -10,7 +11,11 @@ export default function DateCanEdit() {
   return (
     <div className="relative group w-2/12 mx-2 text-left text-base font-light leading-relaxed">
       {!toggle && (
-        <span className="px-3 py-3  inline-block    text-pink-800">
+        <span
+          className={`px-3 py-3 inline-block text-pink-800 ${
+            task.done ? "line-through" : ""
+          }`}
+        >
           {dateFormatShort(task.date)}
         </span>
       )}

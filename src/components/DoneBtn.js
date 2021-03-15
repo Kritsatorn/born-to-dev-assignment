@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 import { EditTaskContext } from "../context/EditTaskContext";
+
 export default function DoneBtn() {
-  const { storeEdit, task, delTask } = useContext(EditTaskContext);
   const [toggle, setToggle] = useState(false);
+  const { storeEdit, task, delTask } = useContext(EditTaskContext);
   return (
     <div className="mx-2 flex ">
       <button
@@ -23,8 +24,8 @@ export default function DoneBtn() {
 
       {task.done && (
         <button
-          className=" bg-gray-300 text-white text-xl ml-1 active:bg-gray-600 font-bold uppercase
-        px-3 py-2 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+          className=" mx-1 mb-1 px-3 py-2 bg-gray-300 text-white text-xl active:bg-gray-600 font-bold uppercase
+        rounded-full shadow hover:shadow-lg outline-none focus:outline-none"
           onClick={() => {
             delTask();
           }}
