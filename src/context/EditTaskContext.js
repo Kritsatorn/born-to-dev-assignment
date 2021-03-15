@@ -6,7 +6,6 @@ const EditTaskContextProvider = ({ children, task }) => {
   const delTask = () => {
     setArrTask(arrTask.filter((item) => item.id !== task.id));
   };
-
   const getItemIndex = (arr, item) => {
     return arr.findIndex((e) => e.id === item);
   };
