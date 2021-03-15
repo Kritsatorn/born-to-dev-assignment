@@ -8,10 +8,10 @@ export default function TaskCard() {
   const { task } = useContext(EditTaskContext);
 
   return (
-    <div className=" bg-green-300 ">
+    <div className=" bg-gray-200 w-8/12 mx-auto rounded-3xl ">
       <div
-        className={`py-4 mx-8 my-4 flex  bg-gray-200 text-red-500 border-2 border-solid border-red-400  
-      ${task.done ? " line-through" : ""} `}
+        className={`py-4 mx-8 mt-4 flex  text-red-500 
+      ${task.done ? "line-through" : ""} `}
       >
         <DoneBtn />
         <NameCanEdit />

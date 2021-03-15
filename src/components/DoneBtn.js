@@ -4,25 +4,32 @@ export default function DoneBtn() {
   const { storeEdit, task, delTask } = useContext(EditTaskContext);
   const [toggle, setToggle] = useState(false);
   return (
-    <div className="mx-2 flex border-2 border-solid border-red-400 ">
+    <div className="mx-2 flex ">
       <button
-        className=" text-red-700 bg-gray-300 px-2 py-1 rounded-3xl focus:outline-none"
+        className=" bg-gray-300 text-white text-xl active:bg-gray-600 font-bold uppercase
+         px-3 py-2 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
+        style={{ transition: "all .15s ease" }}
         onClick={(event) => {
           storeEdit(event, toggle, "done", task.id);
           setToggle(!toggle);
         }}
       >
-        {task.done ? "Undo" : "Done"}
+        {task.done ? (
+          <i className="fa fa-undo"></i>
+        ) : (
+          <i className="fa fa-check"></i>
+        )}
       </button>
 
       {task.done && (
         <button
-          className=" text-red-700 bg-gray-300 px-2 py-1 rounded-3xl focus:outline-none"
+          className=" bg-gray-300 text-white text-xl ml-1 active:bg-gray-600 font-bold uppercase
+        px-3 py-2 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
           onClick={() => {
             delTask();
           }}
         >
-          Del
+          <i className="fa fa-trash-alt"></i>
         </button>
       )}
     </div>

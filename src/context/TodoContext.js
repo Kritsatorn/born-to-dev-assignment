@@ -3,15 +3,14 @@ import useLocalStorage from "../hooks/useLocalStorage";
 const TodoContext = React.createContext();
 const TodoContextProvider = (props) => {
   const [arrTask, setArrTask] = useLocalStorage("arrTask", []);
-
-  // let maxId = 0;
-  // if (arrTask.lenght > 0) {
-  //   maxId = arrTask.reduce(
-  //     (max, obj) => (obj.id > max ? obj.id : max),
-  //     arrTask[0].id
-  //   );
-  // }
-  const [countTask, setCountTask] = useState(1);
+  let maxId = 0;
+  if (arrTask.lenght > 0) {
+    maxId = arrTask.reduce(
+      (max, obj) => (obj.id > max ? obj.id : max),
+      arrTask[0].id
+    );
+  }
+  const [countTask, setCountTask] = useState(maxId + 1);
   const [task, setTask] = useState({
     id: 0,
     name: "",

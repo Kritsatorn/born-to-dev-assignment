@@ -8,15 +8,20 @@ export default function HomePage() {
   const { arrTask, dateFormatShort } = useContext(TodoContext);
 
   return (
-    <div className="w-full h-screen bg-gray-100 text-gray-300 text-center">
-      <div className="w-full pt-8 pl-8 text-4xl font-extrabold text-left text-green-400 ">
-        TO-DO LIST
+    <div className="w-full bg-gray-100 text-gray-300 text-center">
+      <div className="w-full pt-8 pl-8 text-left ">
+        <h1 class="text-6xl font-normal leading-normal mt-0 mb-2 text-pink-800">
+          TO-DO LIST
+        </h1>
       </div>
-      <div className="w-full font-sans mt-8 bg-gray-200">
+      <div className="w-full font-sans mt-8 bg-white">
         <CreateTask />
       </div>
-      <div className="w-full font-sans mt-8 bg-blue-200">
-        To day
+      <div className="w-full font-sans mt-8 ">
+        <h2 class=" text-left text-5xl font-normal leading-normal pl-8 mt-0 mb-2 text-pink-800">
+          Today
+        </h2>
+
         {arrTask &&
           arrTask
             .filter(
@@ -29,8 +34,11 @@ export default function HomePage() {
               </EditTaskContextProvider>
             ))}
       </div>
-      <div className="w-full font-sans mt-8 bg-red-100">
-        Others Day
+      <div className="w-full font-sans mt-8 ">
+        <h2 class=" text-left text-5xl font-normal leading-normal pl-8 mt-0 mb-2 text-pink-800">
+          Others Day
+        </h2>
+
         {arrTask &&
           arrTask
             .filter(
