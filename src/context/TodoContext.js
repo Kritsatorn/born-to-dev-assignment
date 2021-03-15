@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 const TodoContext = React.createContext();
 const TodoContextProvider = (props) => {
   const [arrTask, setArrTask] = useLocalStorage("arrTask", []);
+
+  // let maxId = 0;
+  // if (arrTask.lenght > 0) {
+  //   maxId = arrTask.reduce(
+  //     (max, obj) => (obj.id > max ? obj.id : max),
+  //     arrTask[0].id
+  //   );
+  // }
   const [countTask, setCountTask] = useState(1);
   const [task, setTask] = useState({
     id: 0,
@@ -21,7 +29,7 @@ const TodoContextProvider = (props) => {
     event.preventDefault();
 
     setArrTask([...arrTask, task]);
-    console.log("date", task.date);
+
     setCountTask((prev) => prev + 1);
     setTask({
       id: countTask,
@@ -51,7 +59,9 @@ const TodoContextProvider = (props) => {
     "Nov",
     "Dec",
   ];
-
+  useEffect(() => {
+    console.log("arr ", arrTask);
+  }, [arrTask]);
   return (
     <TodoContext.Provider
       value={{

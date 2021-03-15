@@ -11,5 +11,5 @@ module.exports = {
       opacity: ["group-hover", "focus"],
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };
