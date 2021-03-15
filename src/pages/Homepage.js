@@ -12,6 +12,9 @@ export default function HomePage() {
       <div className="w-full pt-8 pl-8 text-4xl font-extrabold text-left text-green-400 ">
         TO-DO LIST
       </div>
+      <div className="w-full font-sans mt-8 bg-red-200">
+        <CreateTask />
+      </div>
       <div className="w-full font-sans mt-8 bg-blue-200">
         To day
         {arrTask &&
@@ -39,10 +42,6 @@ export default function HomePage() {
                 <TaskCard />
               </EditTaskContextProvider>
             ))}
-      </div>
-
-      <div className="w-full font-sans mt-8 bg-red-200">
-        <CreateTask />
       </div>
     </div>
   );

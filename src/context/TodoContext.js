@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
 const TodoContext = React.createContext();
 const TodoContextProvider = (props) => {
-  const [arrTask, setArrTask] = useState([]);
+  const [arrTask, setArrTask] = useLocalStorage("arrTask", []);
   const [countTask, setCountTask] = useState(1);
   const [task, setTask] = useState({
     id: 0,
